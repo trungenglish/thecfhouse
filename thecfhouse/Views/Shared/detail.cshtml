@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/CSSdetail.css" rel="stylesheet" />
+</head>
+<body>
+    @*PHẦN HEADER ĐẦU*@
+    <div class="top-bar">
+        <div class="container">
+            <div class="header-first">
+                <div class="header-first-inner">
+                    <div class="header-first-inner-text-icon">
+                        <a href="">
+                            <img src="https://file.hstatic.net/1000075078/file/vector_706a88566eab4f009bed6eea93cd890b.png"/>
+                            <span>150 Cửa hàng khắp cả nước</span>
+                        </a>
+                    </div>
+                    <div class="header-first-inner-text-icon">
+                        <a href="">
+                            <img src="https://file.hstatic.net/1000075078/file/group_8de276faa50c486b9d485826c506803b.png"/>
+                            <span>Đặt hàng: 1800.6936</span>
+                        </a>
+                    </div>
+                </div>                         
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

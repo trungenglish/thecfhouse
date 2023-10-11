@@ -1,0 +1,60 @@
+﻿body {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: none;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    position: initial !important;
+    font-family: 'SF Pro Text', sans-serif;
+    line-height: 1.42857143;
+    font-size: 14px;
+    color: #000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-weight: 400;
+    background: #fff;
+}
+.top-bar{
+    width: 100%;
+    height: 42px;
+}
+.container{
+    width: 960px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+.header-first{
+    width: 100%;
+}
+.header-first-inner{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+}
+.header-first-inner-text-icon{
+    padding:0 4.2%;
+    height: 22px;
+    width: 180px;
+}
+.header-first-inner-text-icon a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #00000099;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    transition: 5s;
+}
+.header-first-inner-text-icon a img{
+    margin-right: 5px;
+}
+img {
+    border: none;
+    max-width:100%;
+    height: auto;
+}
+ 
