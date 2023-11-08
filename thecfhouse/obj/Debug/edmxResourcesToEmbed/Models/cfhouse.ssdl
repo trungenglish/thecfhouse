@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DoAnWebbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NameUser" Type="nvarchar(max)" />
+    <Property Name="RoleUser" Type="nvarchar(max)" />
+    <Property Name="PasswordUser" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DoAnWebb.dbo.Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MALOAIHANG" Type="int" />
+    <Property Name="TENLOAIHANG" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENKH" Type="nvarchar(max)" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="15" />
+    <Property Name="EMAIL" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="MACHITIET" />
+    </Key>
+    <Property Name="MACHITIET" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MASP" Type="int" />
+    <Property Name="MADH" Type="int" />
+    <Property Name="SOLUONG" Type="int" />
+    <Property Name="DONGIA" Type="float" />
+  </EntityType>
+  <EntityType Name="OrderPro">
+    <Key>
+      <PropertyRef Name="MATHANHTOAN" />
+    </Key>
+    <Property Name="MADATHANG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MASP" Type="int" />
+    <Property Name="NGAYDAT" Type="date" />
+    <Property Name="MAKH" Type="int" />
+    <Property Name="DIACHIGIAOHANG" Type="nvarchar(max)" />
+    <Property Name="MATHANHTOAN" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="PHUONGTHUCTTHANHTOAN" Type="char" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DoAnWebb.dbo.Payment' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Payment">
+          <Property Name="MASP" Type="int" />
+          <Property Name="MAKH" Type="char" MaxLength="5" />
+          <Property Name="GHICHU" Type="nvarchar(max)" />
+          <Property Name="NGAYTHANHTOAN" Type="date" />
+          <Property Name="MATHANHTOAN" Type="char" MaxLength="15" />
+        </EntityType>-->
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENSP" Type="nvarchar(max)" />
+    <Property Name="LOAISP" Type="nchar" MaxLength="20" />
+    <Property Name="HINHSP" Type="nvarchar(max)" />
+    <Property Name="MOTA" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ProductsDetail">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GIA" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="KICHCO" Type="bit" />
+    <Property Name="TOPPING" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__OrderDetai__MASP__44FF419A">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderPro__MAKH__4222D4EF">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="OrderPro">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pro_Category">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pro1_Category">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductsDetail" Type="Self.ProductsDetail" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="ProductsDetail">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'DoAnWebb.dbo.Payment' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Pro4_Category" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'DoAnWebb.dbo.Payment' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Pro5_Category" />-->
+  <EntityContainer Name="DoAnWebbModelStoreContainer">
+    <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderPro" EntityType="Self.OrderPro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductsDetail" EntityType="Self.ProductsDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Category].[MASP] AS [MASP], 
+    [Category].[MALOAIHANG] AS [MALOAIHANG], 
+    [Category].[TENLOAIHANG] AS [TENLOAIHANG]
+    FROM [dbo].[Category] AS [Category]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__OrderDetai__MASP__44FF419A" Association="Self.FK__OrderDetai__MASP__44FF419A">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderPro__MAKH__4222D4EF" Association="Self.FK__OrderPro__MAKH__4222D4EF">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="OrderPro" EntitySet="OrderPro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pro_Category" Association="Self.FK_Pro_Category">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pro1_Category" Association="Self.FK_Pro1_Category">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductsDetail" EntitySet="ProductsDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

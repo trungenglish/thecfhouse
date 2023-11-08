@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/CSSTrangorder.css"/>
+</head>
+<body>
+    @*----->PHẦN HEADER<-----*@
+    <div class="header">
+        <div class="container size">
+            <div class="container-content size">
+                <div>
+                    <a>
+                        <img style="height:100px;width:200px;" src="~/img/The-Coffee-House-Logo-PNG-2.png" />
+                    </a>
+                </div>
+                <div class="header-dilivery">
+                    <img style="width: 40px; height: 40px;" src="~/img/Delivery2.png" />
+                    <div class="header-dilivery-content">
+                        <h5>Giao hàng</h5>
+                        <p>Tại: Nhập địa chỉ giao hàng</p>
+                    </div>
+                    <i class="ti-angle-down"></i>
+                </div>
+                <nav class="header-nav">
+                    <ul>
+                        <li>Đặt hàng</li>
+                        <li>Tin tức</li>
+                        <li>Cửa hàng</li>
+                        <li>Khuyến mãi</li>
+                        <li>Tuyển dụng</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

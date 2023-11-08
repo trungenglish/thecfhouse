@@ -8,11 +8,6 @@ namespace thecfhouse.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -38,5 +33,14 @@ namespace thecfhouse.Controllers
         {
             return View();
         }
+        public ActionResult Test4()
+        {
+            return View();
+        }
+        public ActionResult Test5()
+        {
+            return View();
+        }
+
     }
 }

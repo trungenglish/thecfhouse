@@ -1,0 +1,12 @@
+﻿.table {
+    margin-top: 35px;
+    border-collapse: collapse;
+    border-spacing:0;
+}
+.table th{
+    padding: 8px;
+
+}
+td{
+    padding: 8px;
+}

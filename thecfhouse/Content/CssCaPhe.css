@@ -106,6 +106,7 @@
 .menu-items{
     margin:0 15px 40px;
     min-height: 145px;
+    width: 22%;
 }
 .menu-items .menu-items-image a {
     width: 100%;

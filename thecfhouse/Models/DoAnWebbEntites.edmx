@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DoAnWebbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="NameUser" Type="nvarchar(max)" />
+          <Property Name="RoleUser" Type="nvarchar(max)" />
+          <Property Name="PasswordUser" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="MALOAIHANG" />
+          </Key>
+          <Property Name="MALOAIHANG" Type="int" Nullable="false" />
+          <Property Name="TENLOAIHANG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENKH" Type="nvarchar(max)" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="15" />
+          <Property Name="EMAIL" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="MACHITIET" />
+          </Key>
+          <Property Name="MACHITIET" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MASP" Type="int" />
+          <Property Name="MADH" Type="int" />
+          <Property Name="SOLUONG" Type="int" />
+          <Property Name="DONGIA" Type="float" />
+        </EntityType>
+        <EntityType Name="OrderPro">
+          <Key>
+            <PropertyRef Name="MATHANHTOAN" />
+          </Key>
+          <Property Name="MADATHANG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MASP" Type="int" />
+          <Property Name="NGAYDAT" Type="date" />
+          <Property Name="MAKH" Type="int" />
+          <Property Name="DIACHIGIAOHANG" Type="nvarchar(max)" />
+          <Property Name="MATHANHTOAN" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="PHUONGTHUCTTHANHTOAN" Type="char" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DoAnWebb.dbo.Payment' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Payment">
+          <Property Name="MASP" Type="int" />
+          <Property Name="MAKH" Type="char" MaxLength="5" />
+          <Property Name="GHICHU" Type="nvarchar(max)" />
+          <Property Name="NGAYTHANHTOAN" Type="date" />
+          <Property Name="MATHANHTOAN" Type="char" MaxLength="15" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DoAnWebb.dbo.PaymentMethod' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PaymentMethod">
+          <Property Name="MATHANHTOAN" Type="char" MaxLength="15" />
+          <Property Name="VNPAY" Type="char" MaxLength="10" />
+          <Property Name="TIENMAT" Type="char" MaxLength="10" />
+          <Property Name="MOMO" Type="char" MaxLength="10" />
+          <Property Name="ZALOPAY" Type="char" MaxLength="10" />
+          <Property Name="SHOPPEEPAY" Type="char" MaxLength="10" />
+          <Property Name="THENGANHANG" Type="char" MaxLength="10" />
+        </EntityType>-->
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MASP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENSP" Type="nvarchar(max)" />
+          <Property Name="MALOAIHANG" Type="int" />
+          <Property Name="HINHSP" Type="nvarchar(max)" />
+          <Property Name="MOTA" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ProductsDetail">
+          <Key>
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MASP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GIA" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="KICHCO" Type="bit" />
+          <Property Name="TOPPING" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__OrderDetai__MASP__45F365D3">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderPro__MAKH__4316F928">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="OrderPro">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_PRO">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="MALOAIHANG" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="MALOAIHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro1_Category">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductsDetail" Type="Self.ProductsDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="ProductsDetail">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'DoAnWebb.dbo.Payment' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Pro4_Category" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DoAnWebb.dbo.Payment' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Pro5_Category" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DoAnWebb.dbo.PaymentMethod' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Proo_Category" />-->
+        <EntityContainer Name="DoAnWebbModelStoreContainer">
+          <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderPro" EntityType="Self.OrderPro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductsDetail" EntityType="Self.ProductsDetail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__OrderDetai__MASP__45F365D3" Association="Self.FK__OrderDetai__MASP__45F365D3">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderPro__MAKH__4316F928" Association="Self.FK__OrderPro__MAKH__4316F928">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="OrderPro" EntitySet="OrderPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_PRO" Association="Self.FK_Category_PRO">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro1_Category" Association="Self.FK_Pro1_Category">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductsDetail" EntitySet="ProductsDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DoAnWebbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NameUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordUser" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="MALOAIHANG" />
+          </Key>
+          <Property Name="MALOAIHANG" Type="Int32" Nullable="false" />
+          <Property Name="TENLOAIHANG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Category_PRO" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENKH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderProes" Relationship="Self.FK__OrderPro__MAKH__4316F928" FromRole="Customer" ToRole="OrderPro" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="MACHITIET" />
+          </Key>
+          <Property Name="MACHITIET" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MASP" Type="Int32" />
+          <Property Name="MADH" Type="Int32" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="DONGIA" Type="Double" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderDetai__MASP__45F365D3" FromRole="OrderDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderPro">
+          <Key>
+            <PropertyRef Name="MATHANHTOAN" />
+          </Key>
+          <Property Name="MADATHANG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MASP" Type="Int32" />
+          <Property Name="NGAYDAT" Type="DateTime" Precision="0" />
+          <Property Name="MAKH" Type="Int32" />
+          <Property Name="DIACHIGIAOHANG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MATHANHTOAN" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PHUONGTHUCTTHANHTOAN" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__OrderPro__MAKH__4316F928" FromRole="OrderPro" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MASP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MALOAIHANG" Type="Int32" />
+          <Property Name="HINHSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MOTA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Category_PRO" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDetai__MASP__45F365D3" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="ProductsDetail" Relationship="Self.FK_Pro1_Category" FromRole="Product" ToRole="ProductsDetail" />
+        </EntityType>
+        <EntityType Name="ProductsDetail">
+          <Key>
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MASP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GIA" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="KICHCO" Type="Boolean" />
+          <Property Name="TOPPING" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Pro1_Category" FromRole="ProductsDetail" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Category_PRO">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="MALOAIHANG" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="MALOAIHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderPro__MAKH__4316F928">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="OrderPro">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDetai__MASP__45F365D3">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro1_Category">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductsDetail" Type="Self.ProductsDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="ProductsDetail">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DoAnWebbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="OrderProes" EntityType="Self.OrderPro" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductsDetails" EntityType="Self.ProductsDetail" />
+          <AssociationSet Name="FK_Category_PRO" Association="Self.FK_Category_PRO">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderPro__MAKH__4316F928" Association="Self.FK__OrderPro__MAKH__4316F928">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="OrderPro" EntitySet="OrderProes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDetai__MASP__45F365D3" Association="Self.FK__OrderDetai__MASP__45F365D3">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro1_Category" Association="Self.FK_Pro1_Category">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductsDetail" EntitySet="ProductsDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DoAnWebbModelStoreContainer" CdmEntityContainer="DoAnWebbEntities">
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="DoAnWebbModel.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+                <ScalarProperty Name="RoleUser" ColumnName="RoleUser" />
+                <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="DoAnWebbModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="MALOAIHANG" ColumnName="MALOAIHANG" />
+                <ScalarProperty Name="TENLOAIHANG" ColumnName="TENLOAIHANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="DoAnWebbModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="DoAnWebbModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="MACHITIET" ColumnName="MACHITIET" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="MADH" ColumnName="MADH" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderProes">
+            <EntityTypeMapping TypeName="DoAnWebbModel.OrderPro">
+              <MappingFragment StoreEntitySet="OrderPro">
+                <ScalarProperty Name="MADATHANG" ColumnName="MADATHANG" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="NGAYDAT" ColumnName="NGAYDAT" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="DIACHIGIAOHANG" ColumnName="DIACHIGIAOHANG" />
+                <ScalarProperty Name="MATHANHTOAN" ColumnName="MATHANHTOAN" />
+                <ScalarProperty Name="PHUONGTHUCTTHANHTOAN" ColumnName="PHUONGTHUCTTHANHTOAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DoAnWebbModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="MALOAIHANG" ColumnName="MALOAIHANG" />
+                <ScalarProperty Name="HINHSP" ColumnName="HINHSP" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductsDetails">
+            <EntityTypeMapping TypeName="DoAnWebbModel.ProductsDetail">
+              <MappingFragment StoreEntitySet="ProductsDetail">
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="KICHCO" ColumnName="KICHCO" />
+                <ScalarProperty Name="TOPPING" ColumnName="TOPPING" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

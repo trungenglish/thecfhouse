@@ -1,0 +1,62 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+    color: #262626;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+*{
+    margin: 0;
+}
+div{
+    display: block;
+}
+/*-----PHẦN HEADER-----*/
+.header {
+    background-color: #fb8d17;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+.container {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1230px;
+    display: flex;
+    align-items: center;    
+}
+.size{
+    height:70px;
+}
+.container-content{
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+.header-dilivery {
+    display: flex;
+    background-color: rgba(232,130,21,.7);
+    height: 56px;
+    width: 252px;
+    align-items: center;
+    border-radius: 5px;
+    padding:8px;
+    margin-right: 32px;
+}
+.header-dilivery-content {
+    height: 56px;
+    width: 252px;
+}
+.header-nav ul {
+    display: flex;
+    list-style: none;
+}
+.header-nav ul li{
+    text-decoration: none;
+    
+}

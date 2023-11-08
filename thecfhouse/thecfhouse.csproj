@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,10 +46,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,9 +129,46 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminUser.cs">
+      <DependentUpon>DoAnWebbEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>DoAnWebbEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>DoAnWebbEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoAnWebbEntites.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DoAnWebbEntites.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoAnWebbEntites.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DoAnWebbEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoAnWebbEntites.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DoAnWebbEntites.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>DoAnWebbEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderPro.cs">
+      <DependentUpon>DoAnWebbEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>DoAnWebbEntites.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductsDetail.cs">
+      <DependentUpon>DoAnWebbEntites.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -143,58 +189,77 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\cloudtea.scss.css" />
     <Content Include="Content\CSSdetail.css" />
     <Content Include="Content\CssCaPhe.css" />
-    <Content Include="Content\CssTrangchu.css" />
+    <Content Include="Content\CssLayout.css" />
+    <Content Include="Content\Csstable\csstable.css" />
+    <Content Include="Content\CSSTrangorder.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\style1.css" />
+    <Content Include="Content\tch.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\best-seller.png" />
-    <Content Include="img\bgpage.jpg" />
-    <Content Include="img\hinh3.jpg" />
-    <Content Include="img\hinh4.jpg" />
-    <Content Include="img\hinh5.jpg" />
+    <Content Include="img\banner2.png" />
+    <Content Include="img\bannerlogo.png" />
+    <Content Include="img\banner_logo2.png" />
+    <Content Include="img\banner_logo3.png" />
+    <Content Include="img\banner_logo4.png" />
+    <Content Include="img\Blog1.png" />
+    <Content Include="img\Blog2.png" />
+    <Content Include="img\Blog3.png" />
+    <Content Include="img\box25-hanh-nhan-nuong.png" />
+    <Content Include="img\Coffeeholic1.png" />
+    <Content Include="img\Coffeeholic2.png" />
+    <Content Include="img\Coffeeholic3.png" />
+    <Content Include="img\favicon.png" />
+    <Content Include="img\hinh2.png" />
+    <Content Include="img\hinh3.png" />
+    <Content Include="img\hinh4.png" />
+    <Content Include="img\hinh5.png" />
     <Content Include="img\hinh6.jpg" />
     <Content Include="img\hinh7.jpg" />
-    <Content Include="img\logo-bahozone-03-icon-h80.png" />
+    <Content Include="img\section 2.png" />
+    <Content Include="img\sp1.png" />
+    <Content Include="img\sp2.png" />
+    <Content Include="img\sp3.png" />
+    <Content Include="img\sp4.png" />
     <Content Include="img\sp5.jpg" />
+    <Content Include="img\sp6.png" />
+    <Content Include="img\sp7.png" />
+    <Content Include="img\sp8.png" />
+    <Content Include="img\suada.jpg" />
+    <Content Include="img\teaholic1.png" />
+    <Content Include="img\teaholic2.png" />
+    <Content Include="img\teaholic3.jpg" />
     <Content Include="img\The-Coffee-House-Logo-PNG-2.png" />
+    <Content Include="img\tra-xanh-tay-bac.png" />
+    <Content Include="Models\DoAnWebbEntites.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DoAnWebbEntites.edmx</DependentUpon>
+      <LastGenOutput>DoAnWebbEntites.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DoAnWebbEntites.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DoAnWebbEntites.edmx</DependentUpon>
+      <LastGenOutput>DoAnWebbEntites.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="img\banner logo.webp" />
-    <Content Include="img\banner.webp" />
-    <Content Include="img\banner2.webp" />
-    <Content Include="img\banner_logo2.webp" />
-    <Content Include="img\banner_logo3.webp" />
-    <Content Include="img\banner_logo4.webp" />
-    <Content Include="img\Blog1.webp" />
-    <Content Include="img\Blog2.webp" />
-    <Content Include="img\Blog3.webp" />
-    <Content Include="img\box25 hanh nhan nuong.webp" />
-    <Content Include="img\Coffeeholic1.webp" />
-    <Content Include="img\Coffeeholic2.webp" />
-    <Content Include="img\Coffeeholic3.webp" />
-    <Content Include="img\favicon.webp" />
-    <Content Include="img\hinh2.webp" />
-    <Content Include="img\new.webp" />
-    <Content Include="img\section 2.webp" />
-    <Content Include="img\sp1.webp" />
-    <Content Include="img\sp2.webp" />
-    <Content Include="img\sp3.webp" />
-    <Content Include="img\sp4.webp" />
-    <Content Include="img\sp6.webp" />
-    <Content Include="img\sp7.webp" />
-    <Content Include="img\sp8.webp" />
-    <Content Include="img\sua da.webp" />
-    <Content Include="img\Teaholic1.webp" />
-    <Content Include="img\Teaholic2.webp" />
-    <Content Include="img\Teaholic3.webp" />
-    <Content Include="img\tra_xanh_tay_bac.webp" />
+    <EntityDeploy Include="Models\DoAnWebbEntites.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DoAnWebbEntites.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DoAnWebbEntites.edmx.diagram">
+      <DependentUpon>DoAnWebbEntites.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -205,7 +270,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\JsTrangchu.js" />
+    <Content Include="Scripts\jstrangchu\beacon.min.js" />
+    <Content Include="Scripts\jstrangchu\instafeed.min.js" />
+    <Content Include="Scripts\jstrangchu\lazy.js" />
+    <Content Include="Scripts\jstrangchu\popper.min.js" />
+    <Content Include="Scripts\jstrangchu\scripts.js" />
+    <Content Include="Scripts\jstrangchu\tch_plugins.min.js" />
+    <Content Include="Scripts\jstrangchu\tippy-bundle.umd.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\orders.js" />
+    <Content Include="Scripts\SelectAll.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -219,19 +293,23 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_CaPhe.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Shared\_Tra.cshtml" />
     <Content Include="Views\Home\Test2.cshtml" />
     <Content Include="Views\Shared\detail.cshtml" />
     <Content Include="Views\Home\Test3.cshtml" />
-    <Content Include="Views\Shared\_Trangchu.cshtml" />
     <Content Include="Views\Shared\_Sanpham.cshtml" />
+    <Content Include="Views\Shared\Trangorder.cshtml" />
+    <Content Include="Views\Home\Test4.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Shared\indexLayout.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Shared\Trangchu.cshtml" />
+    <Content Include="Views\Home\Test5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -259,6 +337,9 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -293,7 +374,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

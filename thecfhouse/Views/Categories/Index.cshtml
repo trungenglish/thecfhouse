@@ -1,0 +1,67 @@
+﻿@model IEnumerable<thecfhouse.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/indexLayout.cshtml";
+}
+
+
+<link href="~/Content/Csstable/csstable.css" />
+<h2 style="margin-top:35px">QUẢN LÝ LOẠI HÀNG</h2>
+
+@using (Html.BeginForm("Index", "Categories", FormMethod.Get))
+{
+    <table class="table">
+        <thead style="background-color: lightblue;">
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MALOAIHANG)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TENLOAIHANG)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkbox" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.MALOAIHANG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENLOAIHANG)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <button id="selectAll" type="button">Chọn tất cả</button>
+    <button id="deselectAll" type="button">Bỏ chọn tất cả</button>
+    <script>
+        var selectAllButton = document.getElementById("selectAll");
+        var deselectAllButton = document.getElementById("deselectAll");
+        var checkboxes = document.getElementsByClassName("checkbox");
+
+        selectAllButton.addEventListener("click", function () {
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = true;
+            }
+        });
+
+        deselectAllButton.addEventListener("click", function () {
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = false;
+            }
+        });
+    </script>
+
+}

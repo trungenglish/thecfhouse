@@ -77,3 +77,7 @@ D:\C#\thecfhouse\thecfhouse\obj\Debug\thecfhouse.csproj.CoreCompileInputs.cache
 D:\C#\thecfhouse\thecfhouse\obj\Debug\thecfhouse.csproj.CopyComplete
 D:\C#\thecfhouse\thecfhouse\obj\Debug\thecfhouse.dll
 D:\C#\thecfhouse\thecfhouse\obj\Debug\thecfhouse.pdb
+D:\C#\thecfhouse\thecfhouse\bin\EntityFramework.dll
+D:\C#\thecfhouse\thecfhouse\bin\EntityFramework.SqlServer.dll
+D:\C#\thecfhouse\thecfhouse\bin\EntityFramework.xml
+D:\C#\thecfhouse\thecfhouse\bin\EntityFramework.SqlServer.xml
