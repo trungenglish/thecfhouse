@@ -6,24 +6,29 @@
 }
 
 
-<link href="~/Content/Csstable/csstable.css" />
-<h2 style="margin-top:35px">QUẢN LÝ LOẠI HÀNG</h2>
+<link href="~/Content/Csstable/csstable.css" rel="stylesheet" />
+<h2 class="margin35px">QUẢN LÝ LOẠI HÀNG</h2>
 
 @using (Html.BeginForm("Index", "Categories", FormMethod.Get))
 {
-    <table class="table">
-        <thead style="background-color: lightblue;">
+    <table>
+        <thead>
             <tr>
                 <th>
 
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MALOAIHANG)
+                    Mã Hàng
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.TENLOAIHANG)
+                    Tên Loại Hàng
                 </th>
-                <th></th>
+                <th class="none">
+
+                </th>
+                <th class="none">
+
+                </th>
             </tr>
         </thead>
 
@@ -40,12 +45,16 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.TENLOAIHANG)
                 </td>
+                <td class="add-border">Sửa</td>
+                <td class="add-border">Xóa</td>
             </tr>
         }
 
     </table>
+
     <button id="selectAll" type="button">Chọn tất cả</button>
     <button id="deselectAll" type="button">Bỏ chọn tất cả</button>
+
     <script>
         var selectAllButton = document.getElementById("selectAll");
         var deselectAllButton = document.getElementById("deselectAll");

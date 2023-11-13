@@ -1,0 +1,4 @@
+﻿@model thecfhouse.Models.Category
+@Html.DropDownListFor(model => model.MALOAIHANG,
+new SelectList(Model.ListCate.OrderBy(model => model.TENLOAIHANG), "MALOAIHANG", "TENLOAIHANG"), "--Mục Sản Phẩm--")
+

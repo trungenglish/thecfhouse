@@ -12,6 +12,7 @@ namespace thecfhouse.Controllers
     public class CategoriesController : Controller
     {
         //tạo biến name database = new name();
+        
         DoAnWebbEntities database = new DoAnWebbEntities();
 
         // GET: Categories

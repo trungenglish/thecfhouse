@@ -4,40 +4,65 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/Content/CSSTrangorder.css"/>
+    <link rel="stylesheet" href="~/Content/CSSTrangorder.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
     @*----->PHẦN HEADER<-----*@
     <div class="header">
         <div class="container size">
             <div class="container-content size">
-                <div>
+                <div style="margin-right: 1.5rem;">
                     <a>
                         <img style="height:100px;width:200px;" src="~/img/The-Coffee-House-Logo-PNG-2.png" />
                     </a>
                 </div>
                 <div class="header-dilivery">
-                    <img style="width: 40px; height: 40px;" src="~/img/Delivery2.png" />
+                    <img style="width: 40px; height: 40px; border-radius: 50%;" src="~/img/Delivery2.png" />
                     <div class="header-dilivery-content">
                         <h5>Giao hàng</h5>
-                        <p>Tại: Nhập địa chỉ giao hàng</p>
+                        <p class="address">Tại: Nhập địa chỉ giao hàng</p>
                     </div>
                     <i class="ti-angle-down"></i>
                 </div>
                 <nav class="header-nav">
                     <ul>
-                        <li>Đặt hàng</li>
-                        <li>Tin tức</li>
-                        <li>Cửa hàng</li>
-                        <li>Khuyến mãi</li>
-                        <li>Tuyển dụng</li>
+                        <li><a>Đặt hàng</a></li>
+                        <li class="nav_item"><a>Tin tức</a></li>
+                        <li class="nav_item"><a>Cửa hàng</a></li>
+                        <li class="nav_item"><a>Khuyến mãi</a></li>
+                        <li class="nav_item"><a>Tuyển dụng</a></li>
                     </ul>
                 </nav>
+                <div class="header-right">
+                    <a class="flex">
+                        <span class="icon-login">
+                            <img style="height: 50px; width: 50px; border-radius: 50%;" src="https://minio.thecoffeehouse.com/image/tchmobileapp/user_avt/default.png" />
+                        </span>
+                    </a>
+                    <span>Trung</span>
+                    <a class="flex">
+                        <div class="icon-cart">
+                            <span class="material-symbols-outlined">
+                            </span>
+                            <div class="icon-quantity">
+                                <span style=" color: white; font-size:10px; font-weight: 600; line-height: 18px;">1</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    <div>
+
+    @*----->Phần MAIN<-------*@
+    <main>
         @RenderBody()
-    </div>
+    </main>
+
+    @*----->Phần FOOTER<-------*@
+    <footer>
+
+    </footer>
 </body>
 </html>

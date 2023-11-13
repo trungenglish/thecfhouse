@@ -1,0 +1,37 @@
+﻿@model thecfhouse.Models.Product
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/indexLayout.cshtml";
+}
+
+<link href="~/Content/createproduct.css" rel="stylesheet" />
+
+<h2 style="margin-top:35px">THÊM MỚI SẢN PHẨM</h2>
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container-product">
+        <h2>Thêm Mới Sản Phẩm</h2>
+        <form>
+            <label for="productName">Tên Sản Phẩm:</label>
+            @Html.EditorFor(model => model.TENSP)
+
+            <label for="productDescription">Mô Tả:</label>
+            @Html.EditorFor(model => model.MOTA)
+
+            <label for="category">Mục Sản Phẩm:</label>
+
+            <!-- Thêm các mục sản phẩm khác nếu cần -->
+            <div>
+                @{Html.RenderAction("SelectCate", "Product");
+                }
+            </div>
+            <label for="productImage">Hình Ảnh:</label>
+            <img src="@Url.Content(Model.HINHSP)" heigth="150" width="150" id="previewImg" />
+
+            <input type="file" name="HINHSP" onchange="ChangeImg(this, document.getelementById('previewImg'))" />
+            <input type="submit" value="Tạo mới" />
+
+        </form>
+    </div>
+    <script src="~/Scripts/uploadimage.js"></script>
+}

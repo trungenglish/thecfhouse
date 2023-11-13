@@ -1,0 +1,37 @@
+﻿@model IEnumerable<thecfhouse.Models.ProductViewModel>
+
+
+
+@{
+    ViewBag.Title = "Tra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="size-4items">
+            <div class="block-title">
+                <h3 class="title-main">Trà Tại Nhà</h3>
+            </div>
+            <div class="flex-wrap">
+                @foreach (var pro in Model)
+                {
+                    <div class="menu-items">
+                        <div class="menu-items-image">
+                            <a href=""><img src="@Url.Content(pro.HINHSP)" /></a>
+                        </div>
+                        <div class="menu-items-info">
+                            <h3>
+                                <a href="">@Html.DisplayFor(model => pro.TENSP)</a>
+                            </h3>
+                            <div class="price-product-items">@Html.DisplayFor(model => pro.GIA) </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,11 +14,14 @@ namespace thecfhouse.Models
     
     public partial class ProductsDetail
     {
-        public int MASP { get; set; }
+        public int ID { get; set; }
+        public Nullable<int> MALOAIHANG { get; set; }
+        public Nullable<int> MASP { get; set; }
         public Nullable<decimal> GIA { get; set; }
         public Nullable<bool> KICHCO { get; set; }
         public string TOPPING { get; set; }
     
+        public virtual Category Category { get; set; }
         public virtual Product Product { get; set; }
     }
 }

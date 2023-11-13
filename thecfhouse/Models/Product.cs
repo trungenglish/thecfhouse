@@ -11,13 +11,17 @@ namespace thecfhouse.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
+            this.ProductsDetails = new HashSet<ProductsDetail>();
+            HINHSP = "~/img/suada.jpg";
         }
     
         public int MASP { get; set; }
@@ -29,6 +33,9 @@ namespace thecfhouse.Models
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual ProductsDetail ProductsDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductsDetail> ProductsDetails { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase UploadImage { get; set; }
     }
 }

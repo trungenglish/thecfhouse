@@ -4,3 +4,214 @@
     Layout = "~/Views/Shared/Trangorder.cshtml";
 }
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link href="~/Content/cssmainoder.css" rel="stylesheet" />
+<section class="tch-box">
+    <div class="container">
+        <div class="row">
+            <div class="tch-checkout">
+                <h1 class="tch-textcenter">
+                    <span class="material-symbols-outlined">                      
+                    </span>
+                    <span class="text">Xác nhận đơn hàng</span>
+                </h1>
+            </div>
+            <div class="block">
+                <div class="tch-checkout-block">
+                    <div class="tch-checkout-custom">
+                        <h4 class="tch-checkout-box-title">
+                            Giao hàng
+                        </h4>
+                        <p class="tch-checkout-box__btn-outline">Đổi phương thức</p>
+                    </div>
+                    <div class="tch-checkout-address">
+                        <div class="tch-delivery-card">
+                            <img style="width:40px;" src="~/img/Delivery2.png" />
+                        </div>
+                        <div class="tch-checkout-address-text">
+                            <div>
+                                <h5 class="tch-delivery-card_title">Đường sư vạn hạnh</h5>
+                                <p class="tch-delivery-card_description">
+                                    Đường Sư Vạn Hạnh, Đ. Sư Vạn Hạnh, Quận 10, Thành phố Hồ Chí Minh, Việt Nam
+                                </p>
+                            </div>
+                            <span class="icon-right">
+                                <i class="ti-angle-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="tch-checkout-address">
+                        <div class="tch-delivery-card"></div>
+                        <div class="tch-delivery-card_content">
+                            <div>
+                                <h5 class="tch-delivery-card_title">Nhận hàng trong ngày 15-30 phút</h5>
+                                <p class="tch-delivery-card_description">Vào lúc: Càng sớm càng tốt</p>
+                            </div>
+                            <span icon-right>
+                                <i class="ti-angle-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="tch-delivery_input" type="text" id="name" placeholder="Tên người nhận" />
+                        <div class="err">Vui lòng nhập tên người nhận</div>
+                    </div>
+                    <div class="form-group">
+                        <input class="tch-delivery_input" type="text" id="phone" placeholder="Số điện thoại" />
+                        <div class="err">Vui lòng nhập số điện thoại người nhận</div>
+                    </div>
+                    <div class="form-group">
+                        <input class="tch-delivery_input" type="text" id="note" placeholder="Thêm hướng dẫn giao hàng" />                        
+                    </div>
+                </div>
+                <div class="tch-checkout-box">
+                    <div class="ptl-20">
+                        <div class="tch-checkout-box-in">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="tch-checkout-box-title"> 
+                                    Các món đã chọn
+                                </h4>
+                                <a style="text-decoration: none; color: black;">
+                                    <p class="tch-checkout-box__btn-outline">Thêm món</p>
+                                </a>
+                            </div>
+                            <div class="tch-order-card d-flex align-items-center justify-content-between">
+                                <div class="d-flex tch-order-card-left">
+                                    <span class="tch-order-card_icon d-flex align-items-center">
+                                        <span class="material-symbols-outlined" style="font-weight:900;"></span>
+                                    </span>
+                                    <div class="tch-order-card_content">
+                                        <h5 class="tch-order-card_title"></h5>
+                                        <p class="tch-order-card_description"></p>
+                                        <p class="tch-order-delete-item">Xóa</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p ></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tch-checkout-box-list">
+                            <div class="mb--12">
+                                <h4 class="tch-checkout-box-title">Tổng cộng</h4>
+                            </div>
+                            <div class="tch-order-card d-flex align-items-center justify-content-between">
+                                <div class="d-flex tch-order-card_left">
+                                    <p class="tch-order-card_text mb-0">Thành tiền</p>
+                                </div>
+                                <div class="tch-order-card_right">
+                                    <p class="mb-0"></p>
+                                </div>
+                            </div>
+                            <div class="tch-order-card d-flex align-items-center justify-content-between">
+                                <div class="d-flex tch-order-card_left">
+                                    <p class="tch-order-card_text mb-0">Phí giao hàng</p>
+                                </div>
+                                <div class="tch-order-card_right">
+                                    <p class="mb-0"></p>
+                                </div>
+                            </div>
+                            <div class="tch-order-card d-flex align-items-center justify-content-between" style="margin-bottom:-25px;">
+                                <div class="d-flex tch-order-card_left">
+                                    <p class="tch-order-card_text mb-0">Bạn có mã Freeship trong mục Ưu đãi</p>
+                                </div>
+                                <div class="tch-order-card_right price-discount">
+                                    <p class="mb-0"></p>
+                                </div>
+                            </div>
+                            <div class="tch-order-card d-flex align-items-center justify-content-between">
+                                <div style="flex: 1 1 0%;">
+                                    <p class="tch-order-card_text mb-0" style="color: #fa8c16;">Khuyến mãi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" d-flex justify-content-between tch-checkout-box--list-submited position-static">
+                        <div>
+                            <p class="tch-order-card_text mb-0" style="color: #fff"></p>
+                            <p class="tch-order-card_text mb-0" style="color: #fff;font-weight: 600;">156.000đ</p>
+                        </div>
+                        <button type="button" class="btn btn-submit">Đặt hàng</button>
+                    </div>
+                </div>
+                <div class="tch-checkout-box-list-remove-cart">
+                    <div class="mb-12">
+                        <h4 class="tch-checkout-box-title mb-0">Phương thức thanh toán</h4>
+                    </div>
+                    <ul class="tch-list-payment-method mb-0">
+                        <li class="tch-payment-method-item">
+                            <div class="mb-0 custom-control">
+                                <input type="radio" name="payment-method" class="custom-control-input" />
+                                <label class="custom-control-label tch-custom-radio" style="padding-left: 6px">
+                                    <span class="icon-payment">
+                                        <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/1000_photo_2021-04-06_11-17-08.jpg" />
+                                    </span>
+                                    <span class="text">Tiền mặt</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="tch-payment-method-item">
+                            <div class="mb-0 custom-control">
+                                <input type="radio" name="payment-method" class="custom-control-input" />
+                                <label class="custom-control-label tch-custom-radio" style="padding-left: 6px">
+                                    <span class="icon-payment">
+                                        <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/386_ic_momo@3x.png" />
+                                    </span>
+                                    <span class="text">MoMo</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="tch-payment-method-item">
+                            <div class="mb-0 custom-control">
+                                <input type="radio" name="payment-method" class="custom-control-input" />
+                                <label class="custom-control-label tch-custom-radio" style="padding-left: 6px">
+                                    <span class="icon-payment">
+                                        <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/388_ic_zalo@3x.png" />
+                                    </span>
+                                    <span class="text">ZaloPay</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="tch-payment-method-item">
+                            <div class="mb-0 custom-control">
+                                <input type="radio" name="payment-method" class="custom-control-input" />
+                                <label class="custom-control-label tch-custom-radio" style="padding-left: 6px">
+                                    <span class="icon-payment">
+                                        <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/1120_1119_ShopeePay-Horizontal2_O.png" />
+                                    </span>
+                                    <span class="text">ShopeePay</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="tch-payment-method-item">
+                            <div class="mb-0 custom-control">
+                                <input type="radio" name="payment-method" class="custom-control-input" />
+                                <label class="custom-control-label tch-custom-radio" style="padding-left: 6px">
+                                    <span class="icon-payment">
+                                        <img src="https://minio.thecoffeehouse.com/image/tchmobileapp/385_ic_atm@3x.png" />
+                                    </span>
+                                    <span class="text">Thẻ ngân hàng</span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="policy">
+                        <label class="checkbox-button">
+                            <input checked="checked" disabled="disabled" type="checkbox" id="choice1-1" name="choice11" class="checkbox-button_input"/>
+                            <span class="checkbox-button_control"></span>
+                            <span class="checkbox-button_label">"Đồng ý với các "<a class="policy-link">điều khoản và điều kiện</a>" mua hàng của The Coffee House"</span>
+                            
+                        </label>
+                    </div>
+                </div>
+                <div class="tch-checkout-box-remove-card">
+                    <p class="tch-checkout-box_text text-center mb-0">
+                        <span class="material-symbols-outlined"></span>
+                        <span>Xóa đơn hàng</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
